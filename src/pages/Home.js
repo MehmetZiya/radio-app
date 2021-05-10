@@ -3,12 +3,13 @@ import { Link } from 'react-router-dom';
 import AllChannels from "../components/AllChannels";
 import Program from '../components/Program';
 import PopUp from '../components/PopUp';
-import styles from '../css/Home.module.css';
+
 
 
 import { ChannelContext } from "../contexts/ChannelContext";
 import { ProgramContext } from "../contexts/ProgramContext";
 import { UserContext } from "../contexts/UserContext";
+import styles from '../css/Home.module.css';
 
 const Home = () => {
     const { loggedUser, showPopUp } = useContext(UserContext);

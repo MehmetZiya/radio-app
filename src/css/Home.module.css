@@ -13,17 +13,6 @@
     text-align: center;
     color: darkblue;
 }
-.logo {
-    width: 50%;
-    height: auto;
-    margin:1rem auto;
-    display: flex;
-    justify-content: center;
-}
-
-.logo img {
-    display: block;
-}
 
 h2{
     text-align: center;
@@ -83,15 +72,26 @@ a {
 .category:hover {
     background-color: rgba(92, 228, 183, 0.795);
 }
+.logo {
+    width: 90%;
+    height: auto;
 
+    margin:1rem auto;
+    display: flex;
+    justify-content: center;
+}
+
+.logo img {
+    display: block;
+}
 
 @media (min-width: 375px) {
     .button{
         width: 50%;
         padding: 0.5rem;  
     }
-    .logo {
-        width: 80%;
+    .topPrograms{
+        width: 100%;
     }
    
 }
@@ -114,5 +114,12 @@ a {
     .topPrograms {
         width: 80%;
     }
+    .logo {
+        width: 55%;
+    }
+    .topCategories {
+        margin: 1rem 4rem;
+    }
+    
 }
    

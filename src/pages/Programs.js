@@ -24,7 +24,7 @@ const Programs = () => {
 
 
     return ( 
-        <div>
+        <div className={styles.programsWrapper}>
             { showPopUp ? <PopUp/> : <div></div>}
             <div className={styles.programContainer}>
             
