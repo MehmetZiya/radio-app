@@ -21,7 +21,7 @@ function MyPage() {
     return (
         <div className="container">
             {loggedUser ? (
-                <div>
+                <div id="content">
                     <div className={styles.infoContainer}>
                         <div className={styles.infoBox}>
                             <h3>My Personal Information</h3>

@@ -82,7 +82,7 @@ const ProgramDetails = (props) => {
                         
                         <h4>Contact</h4>
                         <p><b>Responsible Editor :</b>{programById.responsibleeditor}</p>
-                        <p><b>E-mail :</b>{programById.email}</p>
+                        {programById.email ? <p><b>E-mail :</b>{programById.email}</p> : <div></div>}
                     </div>
                 
                 </div>
