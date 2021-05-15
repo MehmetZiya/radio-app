@@ -24,6 +24,7 @@ h2{
     margin: 2rem auto;
     background: rgb(0, 0, 0);
     width: 20%;
+    min-width: 270px;
     padding: 1rem;
     border-radius: 20px; 
     font-weight: 700;
