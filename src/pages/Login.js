@@ -51,11 +51,12 @@ const Login = () => {
             </div>
             <div className ={styles.input}>
                 <label>Password :</label>
+                
                 <input 
                     type="password"
                     onChange = {handlePasswordChange}/>
-
             </div>
+            
             
             <Link to="/register" className={styles.registerLink}>Not member? Register</Link>
             <div className={styles.loginButton}>

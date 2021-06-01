@@ -18,6 +18,12 @@ const whoami = (req, res) => {
     res.json(req.session.user || null);
   };
 
+const validPassword = (password) => {
+    if(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,24}$/.test(password)) return true;
+    return false
+
+}
+
 const register = (req, res) => {
     let newUser = req.body ;
 
@@ -28,6 +34,9 @@ const register = (req, res) => {
         if(registeredUser) {
             res.json({ error : "This email has alreadey registered"}) ;
         }  else {
+            if(!validPassword(req.body.password)) {
+                return res.status(400).json({ failed : "Password is not valid!"})
+            }
             newUser.password = Encrypt.encrypt(newUser.password);
             query = /*sql*/ `INSERT INTO users (username, email, password) VALUES ($username, $email, $password)` ;
             params = {
@@ -38,10 +47,7 @@ const register = (req, res) => {
             };
 
             db.run(query, params, function(err){
-                if (err) {
-                    res.status(400).json({ error: err });
-                    return;
-                }
+            
                 res.json({ success : `${newUser.email} registered successfully`});
             });
         }

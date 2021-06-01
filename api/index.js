@@ -34,6 +34,11 @@ app.use(categoryPrefix, categoryRoutes);
 
 app.use(express.static(path.join(__dirname, "../build")));
 
+app.get('/', function (req, res) {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
+
+
 app.listen(port, (err) => {
     if (err) {
         console.log("Something went wrong");
