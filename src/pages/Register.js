@@ -18,6 +18,7 @@ const Register = () => {
     const handleUsernameChange = (e) => { setUsername(e.target.value)};
     const handleEmailChange = (e) => {setEmail(e.target.value)};
     const handlePasswordChange = (e) => {setPassword(e.target.value)};
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         let newUser = {
@@ -37,6 +38,15 @@ const Register = () => {
         } 
         if( result.error) {
             setRegisterErrMsg(result.error)
+            setShowRegisterMsg(true);
+
+            setTimeout(()=>{
+                setShowRegisterMsg(false);
+            }, 2500)
+            return;
+        }
+        if( result.failed) {
+            setRegisterErrMsg(result.failed)
             setShowRegisterMsg(true);
 
             setTimeout(()=>{
@@ -75,10 +85,12 @@ const Register = () => {
                     required/>
 
             </div>
+            <p className={styles.psw}>Password must have at least one uppercase and one number</p>
             <Link to="/login" className={styles.loginLink}>Already registered? Login</Link>
             <div className={styles.registerButton}>
                 <button>Register</button>
             </div>
+
             { showRegisterMsg && (
                 <div>
                     {registerMsg ? <p className={styles.registerMsg}>{registerMsg}</p> : <p className={styles.errorMessage}>{registerErrMsg}</p>}

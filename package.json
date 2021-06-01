@@ -1,5 +1,6 @@
 {
   "name": "radio-app",
+  "homepage": "http://mzy.one/radio",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

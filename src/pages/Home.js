@@ -6,6 +6,7 @@ import PopUp from '../components/PopUp';
 
 
 
+
 import { ChannelContext } from "../contexts/ChannelContext";
 import { ProgramContext } from "../contexts/ProgramContext";
 import { UserContext } from "../contexts/UserContext";
@@ -48,7 +49,7 @@ const Home = () => {
             { showPopUp ? <PopUp/> : <div></div>}
             <div className= {styles.topChannels}>
                 <div className={styles.logo}>
-                    <img src= { window.location.origin + "/Sverigesradio.png"}  alt="logo"/>
+                    <img src= { "https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fimg4.wikia.nocookie.net%2F__cb20100512063108%2Flogopedia%2Fimages%2F8%2F87%2FSverigeSRadio_2010.png&f=1&nofb=1"}  alt="logo"/>
                 </div> 
                 { loggedUser ? <p className={styles.greeting}>Wellcome {loggedUser.username}!</p> : <></>}
                 <h2>Populer Channels</h2>
