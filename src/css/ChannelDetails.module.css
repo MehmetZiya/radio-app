@@ -4,6 +4,7 @@
     justify-content: center;
     align-items: center;
     position: relative;
+    margin-top: 9rem;
 }
 
 .image {
@@ -76,7 +77,7 @@
     transition: 0.4s;
 }
 
-.channelInfo h4 {
+.channelInfo p {
     margin-bottom: 3rem;
     width: 80%;
   

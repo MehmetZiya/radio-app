@@ -90,7 +90,7 @@ const ChannelDetails = (props) => {
 
             {channelById && (
                     <div className={styles.channelInfo} style={textColorObj}>
-                        <h4>{channelById.tagline}</h4>
+                        <p>{channelById.tagline}</p>
                         <div className={styles.btn}>
                             <a href={channelById.siteurl} target="_blank" style = {bgColorObj} rel="noopener noreferrer" > Channel Website</a>
                             <Link to={`/channels/schedule/${channelId}`} style = {bgColorObj}>Schedule</Link>
