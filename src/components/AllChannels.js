@@ -14,6 +14,7 @@ const AllChannels = (prop) => {
     const goChannelDetails = () => {
         if(loggedUser){
             history.push(`/channels/${prop.channel.id}`);
+            window.scrollTo(0,0);
             return;
         }
         setShowPopUp(true);

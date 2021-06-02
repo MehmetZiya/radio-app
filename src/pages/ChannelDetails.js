@@ -14,6 +14,7 @@ const ChannelDetails = (props) => {
     const [ addMsg, setAddMsg] = useState("");
     const [ addingErrMsg , setAddingErrMsg] = useState("");
     const history = useHistory();
+   
     
     
 
@@ -50,6 +51,10 @@ const ChannelDetails = (props) => {
        
     }
 
+    const goSchedule = () => {
+        history.push(`/channels/schedule/${channelId}`);
+        window.scrollTo(0,0);
+    }
     
 
     let bgColorObj =  {};
@@ -66,7 +71,13 @@ const ChannelDetails = (props) => {
  
     return (
         <div className={styles.channelContainer}>
-             <span className={styles.back} onClick={()=> history.goBack()}> Back </span>
+            {showAddMsg && (
+                <div>
+                    { !addingErrMsg ? <p className={styles.registerMsg}>{addMsg}</p> : <p className={styles.errorMessage}>{addingErrMsg}</p>}
+                </div>
+                
+            )}
+             
             {channelById && (
             <div className={styles.card} style={bgColorObj} >
                 <img className={styles.image} src={channelById.image} alt={channelById.name}/>
@@ -77,15 +88,13 @@ const ChannelDetails = (props) => {
                 <audio controls className={styles.player}>
                     <source src= {channelById.liveaudio.url}/>
                 </audio>
-                <div><button style ={textColorObj} onClick={sendFavToDB}>Add to Fav +</button></div>
+                <div className = {styles.btnGrp}>
+                    <button style ={textColorObj} onClick={sendFavToDB}>Add to Fav +</button>
+                    <button style ={textColorObj} onClick={goSchedule}>Schedule</button>
+                </div>
             </div>
             )}
-            {showAddMsg && (
-                <div>
-                    { !addingErrMsg ? <p className={styles.registerMsg}>{addMsg}</p> : <p className={styles.errorMessage}>{addingErrMsg}</p>}
-                </div>
-                
-            )}
+            
             
 
             {channelById && (
@@ -93,8 +102,7 @@ const ChannelDetails = (props) => {
                         <p>{channelById.tagline}</p>
                         <div className={styles.btn}>
                             <a href={channelById.siteurl} target="_blank" style = {bgColorObj} rel="noopener noreferrer" > Channel Website</a>
-                            <Link to={`/channels/schedule/${channelId}`} style = {bgColorObj}>Schedule</Link>
-                            <Link to={`/channels/programs/${channelId}`} style = {bgColorObj} >Programs</Link>
+                            <Link to={`/channels/programs/${channelId}`} style = {bgColorObj} >Channels Programs</Link>
                         </div>
                     </div>
                 )}
