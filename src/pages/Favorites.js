@@ -38,7 +38,7 @@ function Favorites(props) {
 
     return (
         <div className="container">
-                <div>
+                <div className = {styles.myFavorites}>
                     <h2>My Favorite List</h2>
                     {showFavorites ? (
                         <div className={styles.loggedInWrapper}>
