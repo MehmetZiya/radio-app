@@ -7,7 +7,7 @@ router.get("/whoami" , userController.whoami) ;
 router.post("/register" , userController.register) ;
 router.post("/login" , userController.login) ;
 router.get("/logout" , userController.logout) ;
-router.put("/edit/:userID", userController.edit);
+router.post("/edit/:userID", userController.edit);
 
 router.get("/fav/:userID" , userController.favoritesOfUser);
 router.post("/fav" , userController.putFavoriteList);

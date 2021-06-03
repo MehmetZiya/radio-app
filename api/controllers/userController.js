@@ -83,32 +83,50 @@ const logout = (req, res) => {
 
 const edit = (req, res) => {
     let userToEdit = req.body;
-    userToEdit.password = Encrypt.encrypt(userToEdit.password);
+    //userToEdit.password = Encrypt.encrypt(userToEdit.password);
     let query = /*sql*/ `
-        UPDATE users
-        SET username= $username, email=$email, password=$password
+        SELECT * FROM users
         WHERE userID = $userID`;
     let params = {
-        $username: userToEdit.username,
-        $email: userToEdit.email,
-        $password: userToEdit.password,
-        $userID: req.params.userID,
-    };
-
-    db.run(query,params, function(err){
-        if(err) {
-            res.json({error: "Bad request"})
-        } else {
-            query = /*sql*/ `SELECT * FROM users
-                             WHERE userID = $userID`;
-            params = {$userID : req.params.userID};
-            db.get(query,params, (err, user)=>{
-                req.session.user = user;
-                res.json({succes : "User updated successfully"})
-            });
+        $password : Encrypt.encrypt(userToEdit.password),
+        $userID : req.params.userID
+    }
+    db.get(query, params)
+        if( userToEdit.password === req.bady.password){
+            res.send("same Password")
+        }else {
+            res.send("not same Password")
         }
-    });
+    
+
+
+
+
+    // query = /*sql*/ `
+    //     UPDATE users
+    //     SET username= $username, email=$email
+    //     WHERE userID = $userID`;
+    // params = {
+    //     $username: userToEdit.username,
+    //     $email: userToEdit.email,
+    //     $password: userToEdit.password,
+    //     $userID: req.params.userID,
+    // };
+    // db.run(query,params, function(err){
+    //     if(err) {
+    //         res.json({error: "Bad request"})
+    //     } else {
+    //         query = /*sql*/ `SELECT * FROM users
+    //                          WHERE userID = $userID`;
+    //         params = {$userID : req.params.userID};
+    //         db.get(query,params, (err, user)=>{
+    //             req.session.user = user;
+    //             res.json({succes : "User updated successfully"})
+    //         });
+    //     }
+    // });
 }
+
 
 const favoritesOfUser = (req, res) => {
     let query = /*sql*/ `
