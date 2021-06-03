@@ -18,6 +18,7 @@ const EditUser = () => {
     const handleUsernameChange = (e) => { setUsername(e.target.value)};
     const handleEmailChange = (e) => {setEmail(e.target.value)};
     const handlePasswordChange = (e) => {setPassword(e.target.value)};
+    const handleNewPasswordChange = (e) => {setPassword(e.target.value)};
     
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -73,6 +74,15 @@ const EditUser = () => {
                 <input 
                     type="password"
                     onChange = {handlePasswordChange}
+                    required
+                    />
+
+            </div>
+            <div className ={styles.input}>
+                <label>New Password :</label>
+                <input 
+                    type="password"
+                    onChange = {handleNewPasswordChange}
                     required
                     />
 
