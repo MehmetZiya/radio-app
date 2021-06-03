@@ -66,6 +66,7 @@ const Navbar = () => {
                     </span>
                     )}
                 </div>
+
                 {!showDropdown && <MenuOutlined onClick={handleClick} className={`${styles.baricon}  ${showDropdown && styles.menubar}` }/>}
                 {showDropdown && (
                     <div className = {styles.dropMenu}>
@@ -75,6 +76,7 @@ const Navbar = () => {
                         <NavLink onClick={handleLinkClick} className = {styles.navItem} to="/programs"> Programs <CompassFilled className={styles.anticon}/> </NavLink>
                         <NavLink onClick={handleLinkClick} className = {styles.navItem} to="/categories"> Categories <SlidersFilled className={styles.anticon} /> </NavLink>
                         <NavLink onClick={handleLinkClick} className = {styles.navItem} to="/users/mypage"> My Page <ToolFilled className={styles.anticon}/></NavLink>
+                        
                     { loggedUser ? ( 
                         <span>
                             <NavLink className = {styles.navItem} to="/" onClick={handleLogout}> Logout <ExitToAppIcon className={styles.icon} /> </NavLink>

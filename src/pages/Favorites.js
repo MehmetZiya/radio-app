@@ -32,13 +32,9 @@ function Favorites(props) {
         };
     };
 
-    const goChannelDetails = () => {
-
-    }
-
     return (
         <div className="container">
-                <div>
+                <div className = {styles.myFavorites}>
                     <h2>My Favorite List</h2>
                     {showFavorites ? (
                         <div className={styles.loggedInWrapper}>
@@ -48,7 +44,7 @@ function Favorites(props) {
                                     {favList.filter(favorite => favorite.class === "Channel").map(favorite => (
                                         <div key={favorite.favID}  className={styles.favoriteObject}>
                                             <Link to={`/channels/${favorite.favID}`}>
-                                                <img src={favorite.imageURL} alt={favorite.name} onClick={goChannelDetails}/>
+                                                <img src={favorite.imageURL} alt={favorite.name}/>
                                             </Link>
                                             <p>{favorite.name}</p>
                                             <button onClick={handleClick} id={favorite.favID}>Remove</button>

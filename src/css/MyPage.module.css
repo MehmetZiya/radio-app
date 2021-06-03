@@ -2,7 +2,9 @@
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
+    margin-top:9rem;
 }
+
 
 
 .links {
@@ -20,7 +22,8 @@
 }
 .contactInformation {
     padding: 1rem;
-
+    width: 330px;
+    font-size: 0.8rem;
 }
 
 
@@ -43,6 +46,7 @@
 }
 
 .loggedOutWrapper {
+    margin-top: 9rem; 
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -80,7 +84,7 @@
     padding: 1rem;
 }
 .info h4 {
-    width: 200px;
+    width: 100px;
 }
 
 
@@ -89,5 +93,10 @@
     .infoContainer {
         flex-wrap: wrap;
     }
+    .contactInformation {
+        font-size: 1rem;
+        
+    }
+    
 }
 

@@ -1,5 +1,4 @@
 import { useContext, useState } from "react";
-//import { Link } from "react-router-dom";
 import { UserContext } from "../contexts/UserContext";
 import styles from '../css/Register.module.css';
 
@@ -9,10 +8,17 @@ const EditUser = () => {
     const [ username, setUsername] = useState("");
     const [ email, setEmail] = useState("");
     const [ password, setPassword] = useState("");
+    const  [showEditMsg, setShowEditMsg] = useState(false);
+    const  [editMsg, setEditMsg] = useState("");
+    const [ editErrMsg, setEditErrMsg] = useState("");
+    
+
+
 
     const handleUsernameChange = (e) => { setUsername(e.target.value)};
     const handleEmailChange = (e) => {setEmail(e.target.value)};
     const handlePasswordChange = (e) => {setPassword(e.target.value)};
+    const handleNewPasswordChange = (e) => {setPassword(e.target.value)};
     
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -20,12 +26,29 @@ const EditUser = () => {
             username,email,password
         };
         let result = await editUser(loggedUser.userID, newUser);
-       // history.push("/")
-        console.log(result);
+        if (result.succes) {
+            setEditMsg(result.succes);
+            setShowEditMsg(true);
+            setTimeout(()=>{
+                setShowEditMsg(false);
+            }, 2500);
+            return;
+        }
+        if (result.error){
+            setEditErrMsg(result.error);
+            setShowEditMsg(true);
+            setTimeout(()=>{
+                setShowEditMsg(false);
+            }, 2500);
+            return;
+        }
+        
+        
     };
 
     return ( 
         <div>
+            
             { loggedUser && 
             <form className = {styles.form} onSubmit = {handleSubmit} >
             <h3>Edit Form</h3>
@@ -55,13 +78,29 @@ const EditUser = () => {
                     />
 
             </div>
+            <div className ={styles.input}>
+                <label>New Password :</label>
+                <input 
+                    type="password"
+                    onChange = {handleNewPasswordChange}
+                    required
+                    />
+
+            </div>
             <div className={styles.registerButton}>
                 <button>Edit</button>
             </div>
+            {showEditMsg && (
+                <div>
+                    { !editErrMsg ? <p className={styles.registerMsg}>{editMsg}</p> : <p className={styles.errorMessage}>{editErrMsg}</p>}
+                </div>
+                
+            )}
+          
         
         </form>}
-            
-          
+        
+        
         </div>
      );
 }

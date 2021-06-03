@@ -17,8 +17,7 @@
 .logo {
     width: 90%;
     height: auto;
-
-    margin:1rem auto;
+    margin:9rem auto 2rem;
     display: flex;
     justify-content: center;
 }

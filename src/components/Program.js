@@ -12,6 +12,7 @@ const Program = (prop) => {
     const goProgramDetails = () => {
         if(loggedUser){
             history.push(`/programs/${prop.program.id}`);
+            window.scrollTo(0,0);
             return;
         }
         setShowPopUp(true);

@@ -28,7 +28,7 @@ const ProgramsOfChannel = (props) => {
     };
 
     return ( 
-        <div>
+        <div className ={styles.progOfChannel}>
             <h2 className={styles.programTitle}>Programs</h2>
             <span className={styles.back} onClick={()=> history.goBack()}> Back </span>
             <div className={styles.programs}>
