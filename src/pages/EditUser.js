@@ -78,15 +78,6 @@ const EditUser = () => {
                     />
 
             </div>
-            <div className ={styles.input}>
-                <label>New Password :</label>
-                <input 
-                    type="password"
-                    onChange = {handleNewPasswordChange}
-                    required
-                    />
-
-            </div>
             <div className={styles.registerButton}>
                 <button>Edit</button>
             </div>
