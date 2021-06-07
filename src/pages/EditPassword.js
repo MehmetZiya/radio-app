@@ -5,25 +5,23 @@ import styles from '../css/Register.module.css';
 
 const EditUser = () => {
     const { loggedUser, editUser} = useContext(UserContext);
-    const [ username, setUsername] = useState("");
-    const [ email, setEmail] = useState("");
     const [ password, setPassword] = useState("");
+    const [ newPassword, setNewPassword] = useState("");
+    const [ confirmNewPassword, setConfirmNewPassword] = useState("");
     const  [showEditMsg, setShowEditMsg] = useState(false);
     const  [editMsg, setEditMsg] = useState("");
     const [ editErrMsg, setEditErrMsg] = useState("");
     
 
-
-
-    const handleUsernameChange = (e) => { setUsername(e.target.value)};
-    const handleEmailChange = (e) => {setEmail(e.target.value)};
     const handlePasswordChange = (e) => {setPassword(e.target.value)};
+    const handleNewPasswordChange = (e) => {setNewPassword(e.target.value)};
+    const handleConfirmNewPasswordChange = (e) => {setConfirmNewPassword(e.target.value)};
    
     
     const handleSubmit = async (e) => {
         e.preventDefault();
         let newUser = {
-            username,email,password
+            password
         };
         let result = await editUser(loggedUser.userID, newUser);
         if (result.succes) {
@@ -44,6 +42,7 @@ const EditUser = () => {
         }
         
         
+        
     };
 
     return ( 
@@ -51,29 +50,31 @@ const EditUser = () => {
             
             { loggedUser && 
             <form className = {styles.form} onSubmit = {handleSubmit} >
-            <h3>Edit Mail / Username</h3>
+            <h3>Edit Password</h3>
+    
             <div className ={styles.input}>
-                <label>Username :</label>
-                <input 
-                    type="text"
-                    onChange = {handleUsernameChange}
-                    placeholder = {loggedUser.username}
-                    required/>
-            </div>
-            <div className ={styles.input}>
-                <label>Email :</label>
-                <input 
-                    type="email"
-                    onChange = {handleEmailChange}
-                    placeholder = {loggedUser.email}
-                    required/>
-                    
-            </div>
-            <div className ={styles.input}>
-                <label>Password :</label>
+                <label> Current Password :</label>
                 <input 
                     type="password"
                     onChange = {handlePasswordChange}
+                    required
+                    />
+
+            </div>
+            <div className ={styles.input}>
+                <label>New Password :</label>
+                <input 
+                    type="password"
+                    onChange = {handleNewPasswordChange}
+                    required
+                    />
+
+            </div>
+            <div className ={styles.input}>
+                <label> Confirm New Password :</label>
+                <input 
+                    type="password"
+                    onChange = {handleConfirmNewPasswordChange}
                     required
                     />
 

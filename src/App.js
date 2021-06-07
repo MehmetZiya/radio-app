@@ -16,6 +16,7 @@ import ProgramsOfCategory from "./pages/ProgramsOfCategory";
 import MyPage from "./pages/MyPage";
 import Favorites from "./pages/Favorites";
 import EditUser from "./pages/EditUser";
+import EditPassword from "./pages/EditPassword";
 import ChannelsSchedule from "./pages/ChannelsSchedule";
 import ProgramsOfChannel from "./pages/ProgramsOfChannel";
 import Home from "./pages/Home";
@@ -46,6 +47,7 @@ function App() {
                 <Route exact path="/register" component={Register} />
                 <Route exact path="/login" component={Login} />
                 <Route exact path="/edit/:userID" component={EditUser} />
+                <Route exact path="/editpassword/:userID" component={EditPassword} />
 
               </BrowserRouter>
             </ChannelProvider>

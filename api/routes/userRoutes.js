@@ -8,6 +8,7 @@ router.post("/register" , userController.register) ;
 router.post("/login" , userController.login) ;
 router.get("/logout" , userController.logout) ;
 router.post("/edit/:userID", userController.edit);
+router.post("/editpassword/:userID", userController.editPassword);
 
 router.get("/fav/:userID" , userController.favoritesOfUser);
 router.post("/fav" , userController.putFavoriteList);

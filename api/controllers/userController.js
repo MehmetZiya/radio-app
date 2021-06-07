@@ -76,6 +76,47 @@ const login = (req, res) => {
     });
 };
 
+const editPassword = (req, res) => {
+    let userToEdit = req.body;
+    userToEdit.password = Encrypt.encrypt(userToEdit.password);
+    let query = /*sql*/ `
+        SELECT * FROM users
+        WHERE userID = $userID`;
+    let params = {
+        $userID : req.params.userID
+    }
+    db.get(query, params , (err, userInDB) => {
+        if(!userInDB) {
+            res.status(401).json({error :"This email was not registered"});
+            return;
+        }
+        if( userInDB.password === userToEdit.password){
+            
+            query = /*sql*/ `
+                UPDATE users
+                SET password = $password
+                WHERE userID = $userID`;
+            params = {
+                $password: userToEdit.password,
+                $userID: req.params.userID,
+            };
+
+            db.run(query,params, function(err){
+                     if(err) {
+                         res.json({error: "Bad request"})
+                     } else {
+                     query = /*sql*/ `SELECT * FROM users
+                                          WHERE userID = $userID`;
+                         params = {$userID : req.params.userID};
+                     }
+                 });
+
+        }else {
+            res.send("not same Password")
+        }
+    })
+}
+
 const logout = (req, res) => {
     delete req.session.user;
     res.json({ success: "Logout Successfully" });
@@ -218,6 +259,7 @@ module.exports = {
     login,
     logout,
     edit,
+    editPassword,
 
     favoritesOfUser,
     putFavoriteList,

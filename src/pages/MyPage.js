@@ -30,7 +30,8 @@ function MyPage() {
                                 <div className={styles.info}><h4>Email :</h4><div>{loggedUser.email}</div></div>
                                 <div className={styles.info}><h4>Password :</h4><div>********</div></div>  
                             </div>
-                            <Link to={`/edit/${loggedUser.userID}`} className={styles.btnLink}>Edit</Link>
+                            <Link to={`/edit/${loggedUser.userID}`} className={styles.btnLink}>Change mail / username</Link>
+                            <Link to={`/editpassword/${loggedUser.userID}`} className={styles.btnLink}>Change password</Link>
                         </div>
                         <div className={styles.links}>
                             <Link to={`/favs/${loggedUser.userID}`} className={styles.btnLink}>My favorite list</Link>
