@@ -83,21 +83,26 @@ const logout = (req, res) => {
 
 const edit = (req, res) => {
     let userToEdit = req.body;
-    //userToEdit.password = Encrypt.encrypt(userToEdit.password);
+    userToEdit.password = Encrypt.encrypt(userToEdit.password);
     let query = /*sql*/ `
         SELECT * FROM users
         WHERE userID = $userID`;
     let params = {
-        $password : Encrypt.encrypt(userToEdit.password),
         $userID : req.params.userID
     }
-    db.get(query, params)
-        if( userToEdit.password === req.bady.password){
+    db.get(query, params , (err, userInDB) => {
+        if(!userInDB) {
+            res.status(401).json({error :"This email was not registered"});
+            return;
+        }
+        if( userInDB.password === userToEdit.password){
             res.send("same Password")
         }else {
             res.send("not same Password")
         }
     
+    })
+        
 
 
 
